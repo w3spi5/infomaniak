@@ -14,8 +14,8 @@
         }
     ],
     "autoload": {
-        "psr-0": {
-            "Infomaniak": "src/"
+        "psr-4": {
+            "Infomaniak\\": "src/"
         }
     }
 }

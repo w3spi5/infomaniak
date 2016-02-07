@@ -13,6 +13,8 @@ This package allows you to have :
 
 ## Usage Example
 
+```php
+<?php
 	use rypsx\Infomaniak;
 	
 	require __DIR__ . '/vendor/autoload.php';
@@ -24,6 +26,8 @@ This package allows you to have :
 	}
 	
 	var_dump($infomaniak);
+?>
+```
 
 ## Required
 
@@ -43,7 +47,7 @@ or by editing `composer.json`, like that :
       "rypsx/infomaniak": "^1.x"
     }
 
-## Licence
+## License
 
 You can use this package in any project. You just have to remember to remove the copyright notice this below.
 
