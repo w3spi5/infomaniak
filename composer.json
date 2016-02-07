@@ -1,0 +1,21 @@
+{
+    "name": "rypsx/infomaniak",
+    "description": "A PHP tool to use the Infomaniak API",
+    "keywords": ["infomaniak", "tool", "php", "api"],
+    "homepage": "https://github.com/rypsx/infomaniak",
+    "license": "MIT",
+    "require": {
+        "nesbot/carbon": "^1.21"
+    },
+    "authors": [
+        {
+            "name": "Rypsx Dev",
+            "email": "info@rypsx.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Infomaniak": "src/"
+        }
+    }
+}
