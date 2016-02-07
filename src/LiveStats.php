@@ -1,6 +1,6 @@
 <?php
 
-namespace rypsx\Infomaniak;
+namespace Infomaniak;
 
 class LiveStats {
 

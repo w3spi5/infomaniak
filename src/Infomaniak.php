@@ -1,21 +1,14 @@
 <?php
 
-namespace rypsx\Infomaniak;
+namespace Infomaniak;
 
-use rypsx\Infomaniak\FluxState;
-use rypsx\Infomaniak\LiveStats;
-use rypsx\Infomaniak\CurrentListeners;
+use Infomaniak\FluxState;
+use Infomaniak\LiveStats;
+use Infomaniak\CurrentListeners;
 use Carbon\Carbon;
 
 class Infomaniak
-{
-
-    /**
-     * Instancier la classe :
-     * use rypsx\Infomaniak;
-     * $infomaniak = new Infomaniak('login', 'password', 'rate', 'codec');
-     */
-    
+{    
     /**
      * @var string
      */
