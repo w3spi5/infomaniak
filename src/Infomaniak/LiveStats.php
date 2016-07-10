@@ -1,6 +1,6 @@
 <?php
 
-namespace Infomaniak;
+namespace Rypsx\Infomaniak;
 
 class LiveStats {
 
@@ -51,7 +51,7 @@ class LiveStats {
     {
 
         if (!is_int((int) $peak) || empty($peak)) {
-        	throw new Exception(self::PEAK_INVALIDE);
+        	throw new \Exception(self::PEAK_INVALIDE);
         } else {
             $this->peak = (int) $peak;
         }
@@ -64,7 +64,7 @@ class LiveStats {
     public function setCurrent($current)
     {
         if (!is_int((int) $current) || empty($current)) {
-        	throw new Exception(self::CURRENT_INVALIDE);
+        	throw new \Exception(self::CURRENT_INVALIDE);
         } else {
             $this->current = (int) $current;
         }

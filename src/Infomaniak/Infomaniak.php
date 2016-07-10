@@ -1,10 +1,10 @@
 <?php
 
-namespace Infomaniak;
+namespace Rypsx\Infomaniak;
 
-use Infomaniak\FluxState;
-use Infomaniak\LiveStats;
-use Infomaniak\CurrentListeners;
+use Rypsx\Infomaniak\FluxState;
+use Rypsx\Infomaniak\LiveStats;
+use Rypsx\Infomaniak\CurrentListeners;
 use Carbon\Carbon;
 
 class Infomaniak
@@ -37,7 +37,7 @@ class Infomaniak
     /**
      * @var Carbon
      */
-    public $dateMaj;
+    public $updateDate;
 
     /**
      * @var Object
@@ -68,16 +68,16 @@ class Infomaniak
      * @param string $codec
      * @return void
      */
-    public function __construct($login = null, $passwd = null, $rate = null, $codec = null)
+    public function __construct($login = null, $passwd = null, $rate = null, $codec = null, $sorted = false)
     {
         $this->setLogin($login);
         $this->setPasswd($passwd);
         $this->setRate($rate);
         $this->setCodec($codec);
-        $this->setDateMaj($this->getDatetime());
+        $this->setUpdateDate($this->getDatetime());
         $this->fluxState();
         $this->liveStats();
-        $this->currentListeners();
+        $this->currentListeners($sorted);
     }
 
     /**
@@ -122,7 +122,7 @@ class Infomaniak
      */
     public function setRate($rate)
     {
-        if (!is_int($rate) || empty($rate) || is_null($rate)) {
+        if (empty($rate) || is_null($rate)) {
             $this->erreur = self::RATE_INVALIDE;
         } else {
             $this->rate = $rate;
@@ -143,12 +143,12 @@ class Infomaniak
     }
 
     /**
-     * Définit la date de mise à jour courante
-     * @param  string $dateMaj
+     * Définit la date de mise à jour
+     * @param  string $updateDate
      */
-    public function setDateMaj($dateMaj)
+    public function setUpdateDate($updateDate)
     {
-        $this->dateMaj = $dateMaj;
+        $this->updateDate = $updateDate;
     }
 
     /**
@@ -161,7 +161,7 @@ class Infomaniak
     	$backup = @file_get_contents('https://'.$this->login.':'.$this->passwd.'@statslive.infomaniak.com/radio/diag/status.php?mount=/'.$this->login.'-'.$this->rate.'-bak.'.$this->codec.'');
 
         if ($principal === false || $backup === false) {
-            $this->erreur = self::URL_INVALIDE;
+            throw new \Exception(self::URL_INVALIDE);
         }
 
         try {
@@ -172,9 +172,9 @@ class Infomaniak
                     'dateMaj'   => $this->getDatetime()
                 ]
             );
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $this->erreur = $e->getMessage();
-        }        
+        }
     }
 
     /**
@@ -195,7 +195,8 @@ class Infomaniak
                     'current' => $current
                 ]
             );
-        } catch (Exception $e) {
+            throw new \Exception(self::URL_INVALIDE);
+        } catch (\Exception $e) {
             $this->erreur = $e->getMessage();
         }
     }
@@ -204,20 +205,30 @@ class Infomaniak
      * Méthode permettant d'obtenir les informations précises sur les auditeurs actuels
      * @return void
      */
-    private function currentListeners()
+    private function currentListeners($sorted = false)
     {
-        $xml = 'https://statslive.infomaniak.com/mediastats.php?radio='.$this->login.'-'.$this->rate.'.'.$this->codec.'&id='.$this->passwd;
-        $xml = simplexml_load_file($xml);
-
         $statsArray = array();
-        foreach ($xml->source->listener as $listener) {
-            $statsArray[] = new CurrentListeners(
-                [
-                    'ip'          => $listener->IP,
-                    'dureeEcoute' => $listener->Connected
-                ]
-            );
-        }
-        $this->current = $statsArray;
-    }   
+        $sortedArray = array();
+        $xml = 'https://statslive.infomaniak.com/mediastats.php?radio='.$this->login.'-'.$this->rate.'.'.$this->codec.'&id='.$this->passwd;
+        
+        try {            
+            $xml = simplexml_load_file($xml);
+            foreach ($xml->source->listener as $listener) {
+
+                $statsArray[(int) $listener->Connected] = new CurrentListeners(
+                    [
+                        'ip'          => $listener->IP,
+                        'dureeEcoute' => $listener->Connected
+                    ]
+                );
+            }
+            if ($sorted === true) {
+                krsort($statsArray);
+            }
+            $this->current = $statsArray;
+            throw new \Exception(self::URL_INVALIDE);
+        } catch (\Exception $e) {
+            $this->erreur = $e->getMessage();
+        }        
+    }
 }

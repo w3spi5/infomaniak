@@ -1,6 +1,6 @@
 <?php
 
-namespace Infomaniak;
+namespace Rypsx\Infomaniak;
 
 class FluxState {
 

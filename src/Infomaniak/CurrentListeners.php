@@ -1,6 +1,6 @@
 <?php
 
-namespace Infomaniak;
+namespace Rypsx\Infomaniak;
 
 class CurrentListeners {
 
@@ -50,9 +50,9 @@ class CurrentListeners {
     public function setIp($ip)
     {
         if (empty($ip)) {
-        	throw new Exception(self::IP_INVALIDE);
+        	throw new \Exception(self::IP_INVALIDE);
         } else {
-            $this->ip = $ip;
+            $this->ip = (string) $ip;
         }
     }
 
@@ -63,7 +63,7 @@ class CurrentListeners {
     public function setDureeEcoute($dureeEcoute)
     {
         if (!is_int((int) $dureeEcoute) || empty($dureeEcoute)) {
-            throw new Exception(self::DUREE_INVALIDE);
+            throw new \Exception(self::DUREE_INVALIDE);
         } else {
             if (($dureeEcoute / 60) < 1) {
                 $dureeFormatee = round($dureeEcoute, 0).' sec';
@@ -79,7 +79,7 @@ class CurrentListeners {
                     }
                 }
             }
-            $this->dureeEcoute = $dureeFormatee;
+            $this->dureeEcoute = (string) $dureeFormatee;
         }
     }
 }
