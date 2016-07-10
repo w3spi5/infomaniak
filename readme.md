@@ -101,8 +101,9 @@ or by editing `composer.json`, like that :
       "rypsx/infomaniak": "^2.x"
     }
 
-## Output example / Example de retour  <a id="exretour"></a> 
+## Output example / Example de retour  <a id="exretour"></a>
 
+```php
 	object(Rypsx\Infomaniak\Infomaniak)[3]
 	  protected 'login' => string '****' (length=12)
 	  protected 'passwd' => string '****' (length=8)
@@ -148,8 +149,9 @@ or by editing `composer.json`, like that :
 	        object(Rypsx\Infomaniak\CurrentListeners)[15]
 	          public 'ip' => string '****' (length=14)
 	          public 'dureeEcoute' => string '14 min' (length=6)
+```
 
-### Thank you note that sensitive informations in the above example were deliberately masked by `****`
+Thank you note that sensitive informations in the above example were deliberately masked by `****`
 
 
 ## License
