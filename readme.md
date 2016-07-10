@@ -153,6 +153,12 @@ object(Rypsx\Infomaniak\Infomaniak)[3]
 
 Thank you note that sensitive informations in the above example were deliberately masked by `****`
 
+### Version 2.0
+- Correction integration via Composer. The project is now used directly by using namespaces
+- Ability to classify the playing time the current auditors. Last parameter of the class call
+- Enlargement of the class to other codec type and flow
+- Various fixes
+
 
 ## License
 
