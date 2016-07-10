@@ -20,7 +20,7 @@ class Infomaniak
     protected $passwd;
 
     /**
-     * @var int
+     * @var string
      */
     protected $rate;
 
