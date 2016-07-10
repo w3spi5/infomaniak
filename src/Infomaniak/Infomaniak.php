@@ -66,6 +66,7 @@ class Infomaniak
      * @param string $passwd
      * @param string $rate
      * @param string $codec
+     * @param bool   $sorted
      * @return void
      */
     public function __construct($login = null, $passwd = null, $rate = null, $codec = null, $sorted = false)
