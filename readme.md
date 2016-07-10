@@ -104,51 +104,51 @@ or by editing `composer.json`, like that :
 ## Output example / Example de retour  <a id="exretour"></a>
 
 ```php
-	object(Rypsx\Infomaniak\Infomaniak)[3]
-	  protected 'login' => string '****' (length=12)
-	  protected 'passwd' => string '****' (length=8)
-	  protected 'rate' => int 128
-	  protected 'codec' => string 'mp3' (length=3)
-	  public 'erreur' => null
-	  public 'updateDate' => string '2016-07-10 11:10:48' (length=19)
-	  public 'flux' => 
-	    object(Rypsx\Infomaniak\FluxState)[2]
-	      public 'principal' => string 'UP' (length=2)
-	      public 'backup' => string 'UP' (length=4)
-	  public 'live' => 
-	    object(Rypsx\Infomaniak\LiveStats)[5]
-	      public 'peak' => int ****
-	      public 'current' => int ****
-	  public 'current' => 
-	    array (size=10)
-	      94261 => 
-	        object(Rypsx\Infomaniak\CurrentListeners)[7]
-	          public 'ip' => string '****' (length=13)
-	          public 'dureeEcoute' => string '26 heures' (length=9)
-	      13481 => 
-	        object(Rypsx\Infomaniak\CurrentListeners)[16]
-	          public 'ip' => string '****' (length=14)
-	          public 'dureeEcoute' => string '4 heures' (length=8)
-	      10145 => 
-	        object(Rypsx\Infomaniak\CurrentListeners)[11]
-	          public 'ip' => string '****' (length=13)
-	          public 'dureeEcoute' => string '3 heures' (length=8)
-	      8521 => 
-	        object(Rypsx\Infomaniak\CurrentListeners)[10]
-	          public 'ip' => string '****' (length=12)
-	          public 'dureeEcoute' => string '2 heures' (length=8)
-	      3614 => 
-	        object(Rypsx\Infomaniak\CurrentListeners)[18]
-	          public 'ip' => string '80.15.123.19' (length=12)
-	          public 'dureeEcoute' => string '1 heure' (length=7)
-	      3147 => 
-	        object(Rypsx\Infomaniak\CurrentListeners)[14]
-	          public 'ip' => string '****' (length=14)
-	          public 'dureeEcoute' => string '52 min' (length=6)
-	      861 => 
-	        object(Rypsx\Infomaniak\CurrentListeners)[15]
-	          public 'ip' => string '****' (length=14)
-	          public 'dureeEcoute' => string '14 min' (length=6)
+object(Rypsx\Infomaniak\Infomaniak)[3]
+  protected 'login' => string '****' (length=12)
+  protected 'passwd' => string '****' (length=8)
+  protected 'rate' => int 128
+  protected 'codec' => string 'mp3' (length=3)
+  public 'erreur' => null
+  public 'updateDate' => string '2016-07-10 11:10:48' (length=19)
+  public 'flux' => 
+    object(Rypsx\Infomaniak\FluxState)[2]
+      public 'principal' => string 'UP' (length=2)
+      public 'backup' => string 'UP' (length=4)
+  public 'live' => 
+    object(Rypsx\Infomaniak\LiveStats)[5]
+      public 'peak' => int ****
+      public 'current' => int ****
+  public 'current' => 
+    array (size=10)
+      94261 => 
+        object(Rypsx\Infomaniak\CurrentListeners)[7]
+          public 'ip' => string '****' (length=13)
+          public 'dureeEcoute' => string '26 heures' (length=9)
+      13481 => 
+        object(Rypsx\Infomaniak\CurrentListeners)[16]
+          public 'ip' => string '****' (length=14)
+          public 'dureeEcoute' => string '4 heures' (length=8)
+      10145 => 
+        object(Rypsx\Infomaniak\CurrentListeners)[11]
+          public 'ip' => string '****' (length=13)
+          public 'dureeEcoute' => string '3 heures' (length=8)
+      8521 => 
+        object(Rypsx\Infomaniak\CurrentListeners)[10]
+          public 'ip' => string '****' (length=12)
+          public 'dureeEcoute' => string '2 heures' (length=8)
+      3614 => 
+        object(Rypsx\Infomaniak\CurrentListeners)[18]
+          public 'ip' => string '80.15.123.19' (length=12)
+          public 'dureeEcoute' => string '1 heure' (length=7)
+      3147 => 
+        object(Rypsx\Infomaniak\CurrentListeners)[14]
+          public 'ip' => string '****' (length=14)
+          public 'dureeEcoute' => string '52 min' (length=6)
+      861 => 
+        object(Rypsx\Infomaniak\CurrentListeners)[15]
+          public 'ip' => string '****' (length=14)
+          public 'dureeEcoute' => string '14 min' (length=6)
 ```
 
 Thank you note that sensitive informations in the above example were deliberately masked by `****`
