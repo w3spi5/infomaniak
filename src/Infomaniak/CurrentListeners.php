@@ -14,6 +14,11 @@ class CurrentListeners {
      */
     public $dureeEcoute;
 
+    /**
+     * @var object
+     */
+    public $ipApi;
+
     CONST IP_INVALIDE    = "L'adresse IP renseignée est invalide";
     CONST DUREE_INVALIDE = "La durée d'écoute est invalide";
 
@@ -81,5 +86,10 @@ class CurrentListeners {
             }
             $this->dureeEcoute = (string) $dureeFormatee;
         }
+    }
+
+    public function setIpApi($ipApi)
+    {
+        $this->ipApi = $ipApi;
     }
 }
