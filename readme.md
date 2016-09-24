@@ -34,7 +34,7 @@ ou en éditant le fichier `composer.json`, tel que :
 
     {
     "require": {
-      "rypsx/infomaniak": "^3.0"
+      "rypsx/infomaniak": "^3.1"
     }
 
 ## [Exemple de retour](#exretour)
@@ -48,6 +48,9 @@ ou en éditant le fichier `composer.json`, tel que :
 ### Version 3.0
 - Corrections de bugs
 - Ajout de la class IpApi  afin d'obtenir les informations de localisation des auditeurs (facultatif)
+
+### Version 3.1
+- Ajout d'une classe "Lite" permettant d'obtenir les informations essentielles uniquement
 
 ---
 
@@ -129,7 +132,7 @@ or by editing `composer.json`, like that :
 
     {
     "require": {
-      "rypsx/infomaniak": "^3.0"
+      "rypsx/infomaniak": "^3.1"
     }
 
 ## Output example / Example de retour  <a id="exretour"></a>
@@ -316,6 +319,9 @@ object(Rypsx\Infomaniak\Infomaniak)[3]
 ### Version 3.0
 - Corrections of bugs
 - Adding IPAPI class to get location information from listeners (optional)
+
+### Version 3.1
+- Adding "Lite" class to obtain essential informations only
 
 ## License
 

@@ -20,14 +20,11 @@ try {
      */
     
 
-    /**
-     * Some examples showing you how to call the class
-     *
-     * $im = new Infomaniak(`login`, `passwd`, `128`, `mp3`); // `sorted` and `ipapi` are set to FALSE
-     *
-     * $im = new Infomaniak(`login`, `passwd`, `128`, `mp3`, `true`, `true`); // TYPICALLY EXAMPLE for version 3.0
-     * 
-     */
+    // Getting only Flux state, Live stats & current listeners informations
+    // $im = new Infomaniak(`login`, `passwd`, `128`, `mp3`);
+
+    // Getting all informations :: TYPICALLY EXAMPLE for version 3
+    $im = new Infomaniak(`login`, `passwd`, 128, `mp3`, true, true);
     
     // Get info about geolocation of current listeners
     /*

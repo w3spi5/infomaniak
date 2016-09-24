@@ -4,13 +4,9 @@ namespace Rypsx\Infomaniak;
 
 use Rypsx\Infomaniak\FluxState;
 use Rypsx\Infomaniak\LiveStats;
-use Rypsx\Infomaniak\CurrentListeners;
 use Carbon\Carbon;
 
-// Geolocalize your listeners
-use Rypsx\Ipapi\Ipapi;
-
-class Infomaniak
+class InfomaniakLite
 {    
     /**
      * @var string
@@ -52,22 +48,11 @@ class Infomaniak
      */
     public $live;
 
-    /**
-     * @var Object
-     */
-    public $current;
-
-    /**
-     * @var int
-     */
-    private $counterIpApi;
-
     CONST LOGIN_INVALIDE    = "Nom d'utilisateur invalide";
     CONST PASSWD_INVALIDE   = "Mot de passe invalide";
     CONST RATE_INVALIDE     = "Débit invalide";
     CONST CODEC_INVALIDE    = "Codec invalide";
     CONST URL_INVALIDE      = "Impossible d'accéder à Infomaniak";
-    CONST IPAPI_EXCEEDED    = "Au moins 149 requêtes ont été effectuées pour IP-API.com, ce qui en fait la limite gratuite par minute";
 
     /**
      * Instance de l'objet Infomaniak
@@ -78,9 +63,8 @@ class Infomaniak
      * @param bool   $sorted
      * @return void
      */
-    public function __construct($login = null, $passwd = null, $rate = null, $codec = null, $sorted = false, $ipapi = false)
+    public function __construct($login = null, $passwd = null, $rate = null, $codec = null)
     {
-        $this->counterIpApi = 0;
         $this->setLogin($login);
         $this->setPasswd($passwd);
         $this->setRate($rate);
@@ -88,7 +72,6 @@ class Infomaniak
         $this->setUpdateDate($this->getDatetime());
         $this->fluxState();
         $this->liveStats();
-        $this->currentListeners($sorted, $ipapi);
     }
 
     /**
@@ -212,53 +195,5 @@ class Infomaniak
         } catch (\Exception $e) {
             $this->erreur = $e->getMessage();
         }
-    }
-
-    /**
-     * Méthode permettant d'obtenir les informations précises sur les auditeurs actuels
-     * Possibilité de trier les résultats de façon décroissante
-     * POssibilité d'obtenir les informations géographiques sur les auditeurs via IP-API.com
-     * @return void
-     */
-    private function currentListeners($sorted, $ipApi)
-    {
-        $statsArray = array();
-        $sortedArray = array();
-        $xml = 'https://statslive.infomaniak.com/mediastats.php?radio='.$this->login.'-'.$this->rate.'.'.$this->codec.'&id='.$this->passwd;
-        
-        try {
-            if ($xml === false) {
-                throw new \Exception(self::URL_INVALIDE);
-            }
-            $xml = simplexml_load_file($xml);
-            foreach ($xml->source->listener as $listener) {
-
-                if ($ipApi) {
-                    if ($this->counterIpApi < 150) {
-                        $this->counterIpApi++;
-                        $ipapiObject = new Ipapi((string) $listener->IP);
-                    } else {
-                        $ipapiObject = null;
-                        $this->erreur = self::IPAPI_EXCEEDED;
-                    }
-                } else {
-                    $ipapiObject = null;
-                }
-
-                $statsArray[(int) $listener->Connected] = new CurrentListeners(
-                    [
-                        'ip'          => $listener->IP,
-                        'dureeEcoute' => $listener->Connected,
-                        'ipApi'       => $ipapiObject
-                    ]
-                );
-            }
-            if ($sorted) {
-                krsort($statsArray);
-            }
-            $this->current = $statsArray;
-        } catch (\Exception $e) {
-            $this->erreur = $e->getMessage();
-        }        
     }
 }
