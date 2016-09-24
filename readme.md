@@ -34,7 +34,7 @@ ou en éditant le fichier `composer.json`, tel que :
 
     {
     "require": {
-      "rypsx/infomaniak": "^3.x"
+      "rypsx/infomaniak": "^3.0"
     }
 
 ## [Exemple de retour](#exretour)
@@ -129,7 +129,7 @@ or by editing `composer.json`, like that :
 
     {
     "require": {
-      "rypsx/infomaniak": "^3.x"
+      "rypsx/infomaniak": "^3.0"
     }
 
 ## Output example / Example de retour  <a id="exretour"></a>
